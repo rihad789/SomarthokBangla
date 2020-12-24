@@ -1,0 +1,77 @@
+﻿@using SomarthokBangla.Models;
+@model IEnumerable<ProductTypes>
+
+@{
+    ViewData["Title"] = "Index";
+    int serialNo = 0;
+}
+
+<br /><br />
+
+<div class="row">
+
+    <div class="col-sm-6">
+        <h2 class="text-info">Product Type List</h2>
+    </div>
+    <div class="col-sm-6 text-right">
+        <a asp-action="Create" class="btn btn-info"><i class="fa fa-plus"></i> Product Type</a>
+    </div>
+</div>
+
+<br />
+
+<div>
+
+    <table class="table table-striped" id="myTable">
+
+        <thead>
+            <tr class="table-info">
+                <th>Serial No</th>
+                <th>
+                    @Html.DisplayNameFor(c => c.ProductType)
+                </th>
+                <th>CategoryName</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(++serialNo)</td>
+                    <td>@item.ProductType</td>
+                    <td>@item.ProductCategory.CategoryName</td>
+                    <td>
+                        <partial name="_ButtonPartial" model="@item.Id" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>
+
+@section scripts{
+    <script src="~/alertify/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var save = '@TempData["save"]'
+            if (save != '') {
+                alertify.success(save);
+            }
+        })
+
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'print'
+                ]
+            });
+        });
+    </script>
+}

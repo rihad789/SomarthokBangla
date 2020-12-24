@@ -1,0 +1,150 @@
+﻿@using SomarthokBangla.Models;
+@model IEnumerable<OrderDetails>
+@{
+    ViewData["Title"] = "Confirm Order";
+    int count = 0;
+}
+@{
+    ViewData["Title"] = "ConfirmOrder";
+    Layout = "~/Areas/Inventory/Views/Shared/_Layout.cshtml";
+}
+
+
+<br /><br />
+
+<div class="row">
+
+
+    <table class="table table-striped">
+
+
+        <thead>
+
+
+            <tr class="table-info">
+                <th>
+                    Name
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Address
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>@ViewBag.userInfo.Name</td>
+                <td>@ViewBag.userInfo.PhoneNo</td>
+                <td>@ViewBag.userInfo.Email</td>
+                <td>@ViewBag.userInfo.Address</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="row">
+
+    <table class="table table-striped" id="myTable">
+
+        <thead>
+
+
+            <tr class="table-info">
+                <th>Serial No</th>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(++count)</td>
+                    <td>@item.Products.Name</td>
+                    <td>@item.Products.Price</td>
+
+                </tr>
+            }
+
+                <tr>
+
+                    <td>
+                        <a asp-action="Index" class="btn btn-danger">
+                            <span class="fa fa-edit"></span> Return Home
+                        </a>
+                    </td>
+
+                    <td>
+                        <form method="post" asp-action="ConfirmOrder">
+                            <input asp-action="ConfirmOrder" type="submit" value="Confirm Order" class="btn btn-primary">
+                        </form>
+                    </td>
+
+                </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+@section scripts{
+    <script src="~/alertify/alertify.min.js"></script>
+    <script type="text/javascript">
+
+
+            $(function() {
+                var edit = '@TempData["edit"]'
+                if (edit != '') {
+                alertify.success(save);
+                }
+
+                var del = '@TempData["delete"]'
+                if (del != '') {
+                alertify.success(save);
+                }
+
+                var save = '@TempData["save"]'
+                if (save != '') {
+                alertify.success(save);
+            }
+            })
+
+            $(document).ready(function () {
+                $('#myTable').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'csv', 'excel', 'print'
+                    ]
+                });
+            });
+
+
+    </script>
+
+
+}

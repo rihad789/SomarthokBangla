@@ -1,0 +1,235 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-SomarthokBangla-1552E872-6F43-4E2D-8C86-F78E56B9EE1C</UserSecretsId>
+    <AssemblyName>SomarthokBangla</AssemblyName>
+    <RootNamespace>SomarthokBangla</RootNamespace>
+    <PackageId>PrismBangla</PackageId>
+    <Authors>PrismBangla</Authors>
+    <Product>PrismBangla</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20201130204918_addingProductCategoryTableintoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201130204918_addingProductCategoryTableintoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201130210718_addingSpecialTagTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201130210718_addingSpecialTagTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201085731_addingProductsTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201085731_addingProductsTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201085748_addingProductsTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201085748_addingProductsTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201085818_addingProductsTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201085818_addingProductsTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201085844_addingProductsTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201085844_addingProductsTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201085905_addingProductsTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201085905_addingProductsTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201085950_addingProductsTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201085950_addingProductsTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201090014_addingProductsTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201090014_addingProductsTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201135132_addingProductsTableintoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201135132_addingProductsTableintoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201135158_addingProductsTableintoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201135158_addingProductsTableintoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201201135511_addingProductsTableintoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201201135511_addingProductsTableintoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201208150732_addingOrderDetailsTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201208150732_addingOrderDetailsTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201211162712_addingCustomerTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201211162712_addingCustomerTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201211163506_addingCustomerTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201211163506_addingCustomerTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201211164223_addingCustomerTableIntoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201211164223_addingCustomerTableIntoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201211164827_addingCustomerTAbleintoDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201211164827_addingCustomerTAbleintoDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201211182513_addingExtraTableToAspDotNetUser.cs" />
+    <Compile Remove="Data\Migrations\20201211182513_addingExtraTableToAspDotNetUser.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="3.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\Shared\_AdminLoginPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\_ManageLayout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\_ManageNav.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\User\ChangePassword.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\User\Manage.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\User\PersonalData.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\User\Register.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Customer\Views\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Customer\Views\Shared\_CustomerLoginPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Customer\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Customer\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Home\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Manufacturer\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Manufacturer\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Manufacturer\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Manufacturer\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Manufacturer\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductCategory\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductCategory\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductCategory\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductCategory\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductCategory\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Products\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Products\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Products\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Products\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Products\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductType\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductType\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductType\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductType\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\ProductType\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Shared\_LoginPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Shared\_ManageLayout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\Shared\_ManageNav.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\SpecialTag\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\SpecialTag\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\SpecialTag\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\SpecialTag\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\SpecialTag\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\User\ChangePassword.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\User\Manage.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\User\PersonalData.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Inventory\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="wwwroot\DetailsURL\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\SpecialTag\Create.cshtml" />
+    <None Include="Areas\Admin\Views\SpecialTag\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\SpecialTag\Details.cshtml" />
+    <None Include="Areas\Admin\Views\SpecialTag\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\SpecialTag\Index.cshtml" />
+    <None Include="wwwroot\lib\easing\easing.js" />
+    <None Include="wwwroot\lib\easing\easing.min.js" />
+    <None Include="wwwroot\lib\slick\config.rb" />
+    <None Include="wwwroot\lib\slick\fonts\slick.svg" />
+    <None Include="wwwroot\lib\slick\slick-theme.less" />
+    <None Include="wwwroot\lib\slick\slick-theme.scss" />
+    <None Include="wwwroot\lib\slick\slick.js" />
+    <None Include="wwwroot\lib\slick\slick.less" />
+    <None Include="wwwroot\lib\slick\slick.min.js" />
+    <None Include="wwwroot\lib\slick\slick.scss" />
+  </ItemGroup>
+
+</Project>

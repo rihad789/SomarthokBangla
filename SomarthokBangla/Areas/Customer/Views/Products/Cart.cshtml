@@ -1,0 +1,71 @@
+﻿@using SomarthokBangla.Models
+@model List<Products>
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<br />
+
+<div class="container">
+    <h2>Your Cart</h2>
+    <div class="row">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/@item.Image" width="200" height="150" alt="productImage" />
+                        </td>
+                        <td> @item.Name</td>
+                        <td> @item.Price</td>
+                        <td> @item.ProductTypes.ProductCategory.CategoryName</td>
+
+
+                        <td>
+                            <a asp-area="Customer" asp-action="Remove" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-danger">
+                                <i class="fa fa-trash-alt"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <a asp-action="Index" asp-controller="Home" class="btn btn-success">Bck to Home</a>
+        </div>
+        <div class="col-sm-6 text-right">
+            <h3>Total Amount</h3>
+            <h3>Grant Total : @Model.Sum(c => c.Price)</h3>
+            <a asp-area="Customer" asp-action="Checkout" asp-controller="Products" class="btn btn-info">Procced To Checkout</a>
+        </div>
+
+    </div>
+
+
+</div>
+
+

@@ -1,0 +1,618 @@
+﻿@using SomarthokBangla.Models;
+@model IEnumerable<Products>
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+
+<!-- Main Slider Start -->
+<div class="header">
+    <div class="container-fluid">
+
+        <!-- New Arrival Product Start -->
+
+        <div class="row">
+
+            <!--*-*-*-*-*-*-*-*-*-*- BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+            <div  class="carousel slide six_shows_one_move gp_products_carousel_wrapper" data-ride="carousel" data-interval="2000">
+
+                <div class="gp_products_carousel_header">
+                    <span>New Arrival</span>
+                    <a href="#" class="pull-right">See more</a>
+                </div>
+
+                <!--========= Wrapper for slides =========-->
+                <div class="carousel-inner" role="listbox">
+
+                    <!--========= 1st slide =========-->
+
+                    @{ int i = 0;}
+                    @foreach (var item in Model)
+                    {
+                        if (item.UplodaDate >= DateTime.Now.AddDays(-5))
+                        {
+                            i++;
+                            var active = i == 1 ? "active" : "";
+
+
+                            <div class="item @active">
+                                <div class="col-xs-12 col-sm-4 col-md-2 gp_products_item">
+                                    @*<div class="gp_products_inner">*@
+
+                                    <div class="card" >
+                                        <a asp-area="Customer" asp-action="Details" asp-controller="Products" asp-route-id="@item.Id">
+
+                                            <img class="card-img-top img-responsive" src="~/@item.Image" style="height:300px;margin-bottom:10px" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">@item.Name</h4>
+                                                <p class="card-text">Price: @item.Price tk</p>
+                                                @*<p><a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a></p>*@
+                                            </div>
+
+                                        </a>
+
+                                    </div>
+
+                                    @*</div>*@
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+
+
+                </div>
+                <!--======= Navigation Buttons =========-->
+                <!--======= Left Button =========-->
+                <a class="left carousel-control gp_products_carousel_control_left" href="#adv_gp_products_1_columns_carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <!--======= Right Button =========-->
+                <a class="right carousel-control gp_products_carousel_control_right" href="#adv_gp_products_1_columns_carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div> <!--*-*-*-*-*-*-*-*-*-*- END BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+
+
+        </div>
+
+        <!-- New Arrival Product End -->
+        <!-- Feature Start-->
+
+        <div class="row">
+
+            <div class="feature">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-6 feature-col">
+                            <div class="feature-content">
+                                <i class="fab fa-cc-mastercard"></i>
+                                <h2>Secure Payment</h2>
+                                <p>
+                                    We accept any local payment method.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 feature-col">
+                            <div class="feature-content">
+                                <i class="fa fa-truck"></i>
+                                <h2>Faster Delivery</h2>
+                                <p>
+                                    We deliver to your doorways.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 feature-col">
+                            <div class="feature-content">
+                                <i class="fa fa-sync-alt"></i>
+                                <h2>90 Days Return</h2>
+                                <p>
+                                    Return if Not Satisfied.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 feature-col">
+                            <div class="feature-content">
+                                <i class="fa fa-comments"></i>
+                                <h2>24/7 Support</h2>
+                                <p>
+                                    Call us if you have queries.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Feature End-->
+        <!-- Electronic Device Product Start -->
+
+        <div class="row">
+
+            <!--*-*-*-*-*-*-*-*-*-*- BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+            <div id="adv_gp_products_4_columns_carousel" class="carousel slide six_shows_one_move gp_products_carousel_wrapper" data-ride="carousel" data-interval="2000">
+
+                <div class="gp_products_carousel_header">
+                    <span>Electronic Device</span>
+                    <a href="#" class="pull-right">See more</a>
+                </div>
+
+                <!--========= Wrapper for slides =========-->
+                <div class="carousel-inner" role="listbox">
+
+
+                    @{int j = 0;}
+                    @foreach (var item in Model)
+                    {
+
+                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 1)
+                        {
+                            j++;
+                            var active = j == 1 ? "active" : "";
+
+                            <div class="item @active">
+                                <div class="col-xs-12 col-sm-4 col-md-2 gp_products_item">
+                                    <div class="card">
+                                        <a asp-area="Customer" asp-action="Details" asp-controller="Products" asp-route-id="@item.Id">
+
+                                            <img class="card-img-top img-responsive" src="~/@item.Image" style="height:300px;margin-bottom:10px" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">@item.Name</h4>
+                                                <p class="card-text">Price: @item.Price tk</p>
+                                                @*<p><a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a></p>*@
+                                            </div>
+
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+
+
+
+                </div>
+                <!--======= Navigation Buttons =========-->
+                <!--======= Left Button =========-->
+                @*<a class="left carousel-control gp_products_carousel_control_left" href="#adv_gp_products_4_columns_carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+
+                </a>*@
+
+                <!--======= Right Button =========-->
+                @*<a class="right carousel-control gp_products_carousel_control_right" href="#adv_gp_products_4_columns_carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>*@
+
+                <a class="btn-floating btn-sm" href="#adv_gp_products_4_columns_carousel" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                <a class="btn-floating btn-sm" href="#adv_gp_products_4_columns_carousel" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+
+            </div> <!--*-*-*-*-*-*-*-*-*-*- END BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+
+        </div>
+
+        <!-- Electronic Device Product End -->
+        <!-- Electronic Accssories Product Start -->
+
+        <div class="row" style="margin-top:20px">
+
+            <!--*-*-*-*-*-*-*-*-*-*- BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+            <div id="adv_gp_products_5_columns_carousel" class="carousel slide six_shows_one_move gp_products_carousel_wrapper" data-ride="carousel" data-interval="2000">
+
+                <div class="gp_products_carousel_header">
+                    <span>Electronic Accssories</span>
+                    <a href="#" class="pull-right">See more</a>
+                </div>
+
+                <!--========= Wrapper for slides =========-->
+                <div class="carousel-inner" role="listbox">
+
+
+                    @{int k = 0;}
+                    @foreach (var item in Model)
+                    {
+
+                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 2)
+                        {
+                            k++;
+                            var active = k == 1 ? "active" : "";
+
+                            <div class="item @active">
+                                <div class="col-xs-12 col-sm-4 col-md-2 gp_products_item">
+                                    <div class="card">
+                                        <a asp-area="Customer" asp-action="Details" asp-controller="Products" asp-route-id="@item.Id">
+
+                                            <img class="card-img-top img-responsive" src="~/@item.Image" style="height:300px;margin-bottom:10px" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">@item.Name</h4>
+                                                <p class="card-text">Price: @item.Price tk</p>
+                                                @*<p><a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a></p>*@
+                                            </div>
+
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+
+                </div>
+                <!--======= Navigation Buttons =========-->
+                <!--======= Left Button =========-->
+                <a class="left carousel-control gp_products_carousel_control_left" href="#adv_gp_products_5_columns_carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <!--======= Right Button =========-->
+                <a class="right carousel-control gp_products_carousel_control_right" href="#adv_gp_products_5_columns_carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div> <!--*-*-*-*-*-*-*-*-*-*- END BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+
+        </div>
+
+        <!-- Electronic Accssories Product End -->
+        <!-- TV and Home Appliance Product Start -->
+
+        <div class="row" style="margin-top:20px">
+
+            <!--*-*-*-*-*-*-*-*-*-*- BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+            <div id="adv_gp_products_6_columns_carousel" class="carousel slide six_shows_one_move gp_products_carousel_wrapper" data-ride="carousel" data-interval="2000">
+
+                <div class="gp_products_carousel_header">
+                    <span>TV and Home Appliance</span>
+                    <a href="#" class="pull-right">See more</a>
+                </div>
+
+                <!--========= Wrapper for slides =========-->
+                <div class="carousel-inner" role="listbox">
+
+
+                    @{int l = 0;}
+                    @foreach (var item in Model)
+                    {
+
+                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 3)
+                        {
+                            l++;
+                            var active = l == 1 ? "active" : "";
+
+                            <div class="item @active">
+                                <div class="col-xs-12 col-sm-4 col-md-2 gp_products_item">
+                                    <div class="card">
+                                        <a asp-area="Customer" asp-action="Details" asp-controller="Products" asp-route-id="@item.Id">
+
+                                            <img class="card-img-top img-responsive" src="~/@item.Image" style="height:300px;margin-bottom:10px" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">@item.Name</h4>
+                                                <p class="card-text">Price: @item.Price tk</p>
+                                                @*<p><a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a></p>*@
+                                            </div>
+
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+
+                </div>
+                <!--======= Navigation Buttons =========-->
+                <!--======= Left Button =========-->
+                <a class="left carousel-control gp_products_carousel_control_left" href="#adv_gp_products_6_columns_carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <!--======= Right Button =========-->
+                <a class="right carousel-control gp_products_carousel_control_right" href="#adv_gp_products_6_columns_carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div> <!--*-*-*-*-*-*-*-*-*-*- END BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+
+        </div>
+
+        <!-- TV and Home Appliance Product End -->
+        <!-- Men's Fashion Product Start -->
+
+        <div class="row" style="margin-top:20px">
+
+            <!--*-*-*-*-*-*-*-*-*-*- BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+            <div id="adv_gp_products_6_columns_carousel" class="carousel slide six_shows_one_move gp_products_carousel_wrapper" data-ride="carousel" data-interval="2000">
+
+                <div class="gp_products_carousel_header">
+                    <span>Men's Fashion</span>
+                    <a href="#" class="pull-right">See more</a>
+                </div>
+
+                <!--========= Wrapper for slides =========-->
+                <div class="carousel-inner" role="listbox">
+
+
+                    @{int m = 0;}
+                    @foreach (var item in Model)
+                    {
+
+                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 3)
+                        {
+                            m++;
+                            var active = m == 1 ? "active" : "";
+
+                            <div class="item @active">
+                                <div class="col-xs-12 col-sm-4 col-md-2 gp_products_item">
+                                    <div class="card">
+                                        <a asp-area="Customer" asp-action="Details" asp-controller="Products" asp-route-id="@item.Id">
+
+                                            <img class="card-img-top img-responsive" src="~/@item.Image" style="height:300px;margin-bottom:10px" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">@item.Name</h4>
+                                                <p class="card-text">Price: @item.Price tk</p>
+                                                @*<p><a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a></p>*@
+                                            </div>
+
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+
+                </div>
+                <!--======= Navigation Buttons =========-->
+                <!--======= Left Button =========-->
+                <a class="left carousel-control gp_products_carousel_control_left" href="#adv_gp_products_6_columns_carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <!--======= Right Button =========-->
+                <a class="right carousel-control gp_products_carousel_control_right" href="#adv_gp_products_6_columns_carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div> <!--*-*-*-*-*-*-*-*-*-*- END BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+
+        </div>
+
+        <!-- Men's Fashion Product End -->
+        <!-- Women's Fashion  Product Start -->
+
+        <div class="row" style="margin-top:20px">
+
+            <!--*-*-*-*-*-*-*-*-*-*- BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+            <div id="adv_gp_products_6_columns_carousel" class="carousel slide six_shows_one_move gp_products_carousel_wrapper" data-ride="carousel" data-interval="2000">
+
+                <div class="gp_products_carousel_header">
+                    <span>Women's Fashion</span>
+                    <a href="#" class="pull-right">See more</a>
+                </div>
+
+                <!--========= Wrapper for slides =========-->
+                <div class="carousel-inner" role="listbox">
+
+
+                    @{int n = 0;}
+                    @foreach (var item in Model)
+                    {
+
+                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 3)
+                        {
+                            n++;
+                            var active = n == 1 ? "active" : "";
+
+                            <div class="item @active">
+                                <div class="col-xs-12 col-sm-4 col-md-2 gp_products_item">
+                                    <div class="gp_products_inner">
+                                        <div class="gp_products_item_image">
+                                            <a href="#">
+
+                                                <img src="~/images/NoImage.png" alt="gp product 001" />
+
+                                            </a>
+                                        </div>
+                                        <div class="gp_products_item_caption">
+                                            <ul class="gp_products_caption_name">
+                                                <li><a href="#">@item.Name</a></li>
+                                                <li><a href="#">@item.Price</a></li>
+                                            </ul>
+                                            <ul class="gp_products_caption_rating">
+                                                <li class="text-center"><button href="#" class="btn btn-info">Add To Cart</button> </li>
+                                                <li class="pull-right"><button href="#" class="btn btn-info">Details</button> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+
+                </div>
+                <!--======= Navigation Buttons =========-->
+                <!--======= Left Button =========-->
+                <a class="left carousel-control gp_products_carousel_control_left" href="#adv_gp_products_6_columns_carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <!--======= Right Button =========-->
+                <a class="right carousel-control gp_products_carousel_control_right" href="#adv_gp_products_6_columns_carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div> <!--*-*-*-*-*-*-*-*-*-*- END BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+
+        </div>
+
+        <!-- Women's Fashion Product End -->
+        <!-- Watches and Accesories Product Start -->
+
+        <div class="row" style="margin-top:20px">
+
+            <!--*-*-*-*-*-*-*-*-*-*- BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+            <div id="adv_gp_products_6_columns_carousel" class="carousel slide six_shows_one_move gp_products_carousel_wrapper" data-ride="carousel" data-interval="2000">
+
+                <div class="gp_products_carousel_header">
+                    <span>Watches and Accesories</span>
+                    <a href="#" class="pull-right">See more</a>
+                </div>
+
+                <!--========= Wrapper for slides =========-->
+                <div class="carousel-inner" role="listbox">
+
+
+                    @{int o = 0;}
+                    @foreach (var item in Model)
+                    {
+
+                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 3)
+                        {
+                            o++;
+                            var active = o == 1 ? "active" : "";
+
+                            <div class="item @active">
+                                <div class="col-xs-12 col-sm-4 col-md-2 gp_products_item">
+                                    <div class="gp_products_inner">
+                                        <div class="gp_products_item_image">
+                                            <a href="#">
+
+                                                <img src="~/images/NoImage.png" alt="gp product 001" />
+
+                                            </a>
+                                        </div>
+                                        <div class="gp_products_item_caption">
+                                            <ul class="gp_products_caption_name">
+                                                <li><a href="#">@item.Name</a></li>
+                                                <li><a href="#">@item.Price</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+
+                </div>
+                <!--======= Navigation Buttons =========-->
+                <!--======= Left Button =========-->
+                <a class="left carousel-control gp_products_carousel_control_left" href="#adv_gp_products_6_columns_carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <!--======= Right Button =========-->
+                <a class="right carousel-control gp_products_carousel_control_right" href="#adv_gp_products_6_columns_carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right gp_products_carousel_control_icons" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div> <!--*-*-*-*-*-*-*-*-*-*- END BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
+
+        </div>
+
+        <!-- Watches and Accesories Product End -->
+        <!-- Review Start -->
+
+        <div class="row" style="margin-top:20px">
+
+            <div class="gp_products_carousel_header">
+                <span>Customer Review</span>
+
+            </div>
+
+            <div class="review">
+                <div class="container-fluid">
+                    <div class="row align-items-center review-slider normal-slider">
+                        <div class="col-md-4">
+                            <div class="review-slider-item">
+                                <div class="review-text">
+                                    <h3>Product Name</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="review-slider-item">
+                                <div class="review-text">
+                                    <h3>Product Name</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="review-slider-item">
+                                <div class="review-text">
+                                    <h3>Product Name</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Review End -->
+
+    </div>
+</div>
+
+
+
+<hr />
+
+
+<script src="~/alertify/alertify.min.js"></script>
+<script type="text/javascript">
+
+
+            $(function() {
+                var edit = '@TempData["order"]'
+                if (edit != '') {
+                alertify.success(save);
+                }
+
+            })
+
+
+</script>

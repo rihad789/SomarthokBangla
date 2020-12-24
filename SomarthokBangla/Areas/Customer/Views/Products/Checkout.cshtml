@@ -1,0 +1,193 @@
+﻿@model SomarthokBangla.Models.Orders
+@using System.Net.Http
+@using SomarthokBangla.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+
+    List<Products> products = HttpContextAccessor.HttpContext.Session.Get<List<Products>>("productsList");
+    if (products == null)
+    {
+        products = new List<Products>();
+    }
+
+}
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<br />
+
+
+<div class="container">
+
+    <h2 class="text-info">Order Details</h2>
+    <br />
+
+    <form asp-action="Checkout" method="post" enctype="multipart/form-data">
+
+        <div class="row">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+
+            </div>
+
+            <div class="col-sm-6">
+
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label asp-for="Name"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="hidden" asp-for="Id" />
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label asp-for="PhoneNo"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input asp-for="PhoneNo" class="form-control" />
+                        <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label asp-for="Email"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label asp-for="Address"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                @*<div class="form-group row">
+                        <div class="col-sm-4">
+                            <label asp-for="OrderDate"></label>
+                        </div>
+                        <div class="col-sm-8" id='datetimepicker1'>
+                            <input asp-for="OrderDate" type="datetime-local" class="form-control" />
+                            <span asp-validation-for="OrderDate" class="text-danger"></span>
+
+                        </div>
+
+                    </div>*@
+
+
+            </div>
+
+            <div class="col-sm-6">
+
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var item in products)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/@item.Image" width="200" height="150" alt="productImage" />
+                                </td>
+                                <td> @item.Name</td>
+                                <td> @item.Price</td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+                <div class="text-right">
+                    <h3>Total Price : @products.Sum(c => c.Price)</h3>
+                </div>
+
+                <div class="text-right">
+                    <input type="submit" value="Place order" class="btn btn-success" />
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </form>
+
+
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/alertify/alertify.min.js"></script>
+    <script type="text/javascript">
+
+
+            $(function() {
+                var edit = '@TempData["order"]'
+                if (edit != '') {
+                alertify.success(save);
+                }
+
+            })
+
+
+    </script>
+}
+<script>
+
+    $(document).ready(function () {
+        $("#OrderDate").datepicker();
+    });
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+
+</script>
+
+@*<script src="~/alertify/alertify.min.js"></script>
+    <script type="text/javascript">
+
+
+                $(function() {
+                    var edit = '@TempData["orderPlaced"]'
+                    if (edit != '') {
+                    alertify.success(save);
+                    }
+
+                })
+
+
+    </script>*@

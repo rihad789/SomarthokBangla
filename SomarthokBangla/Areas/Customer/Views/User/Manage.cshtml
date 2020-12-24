@@ -1,0 +1,91 @@
+﻿@model SomarthokBangla.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Areas/Customer/Views/Shared/_ManageLayout.cshtml";
+}
+
+<div class="container">
+
+
+    <div class="profile-content">
+
+        <div class="row">
+
+            <form asp-action="Manage" id="RegisterForm" asp-controller="User" asp-area="Customer" method="post">
+
+                <div class="p-4 rounded border">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                    </div>
+
+                    <input type="hidden" asp-for="UserName" value="@Model.UserName" />
+
+                    <div class="form-group row">
+                        <h3>@ViewBag.message</h3>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label asp-for="UserName"></label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input asp-for="UserName" class="form-control" disabled="disabled" />
+                        </div>
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label asp-for="Email"></label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input asp-for="Email" class="form-control" />
+                        </div>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label asp-for="PhoneNumber"></label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input asp-for="PhoneNumber" class="form-control" />
+                        </div>
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+
+                        </div>
+                        <div class="col-sm-4 text-center">
+
+                            @*<a asp-action="Login" class="btn btn-success">Back To List</a>*@
+                            <p><input type="submit" class="btn btn-primary  form-control" value="Save" /></p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="~/alertify/alertify.min.js"></script>
+    <script type="text/javascript">
+
+            $(function() {
+
+                var save = '@TempData["save"]'
+                if (save != '') {
+                alertify.success(save);
+            }
+            })
+
+    </script>

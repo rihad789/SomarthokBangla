@@ -1,0 +1,80 @@
+﻿@model SomarthokBangla.Models.ApplicationUser
+@{
+    ViewData["Title"] = "PersonalData";
+    Layout = "~/Areas/Customer/Views/Shared/_ManageLayout.cshtml";
+}
+
+<div class="container">
+
+
+    <div class="profile-content">
+
+        <div class="row">
+
+            <form asp-action="PersonalData" id="RegisterForm"  method="post">
+
+                <div class="p-4 rounded border">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                    </div>
+
+                    <input type="hidden" asp-for="Id" value="@Model.Id" />
+
+                    <div class="form-group row">
+                        <h3>@ViewBag.message</h3>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label asp-for="FirstName"></label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input asp-for="FirstName" class="form-control" />
+                        </div>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label asp-for="LastName"></label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input asp-for="LastName" class="form-control" />
+                        </div>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label asp-for="Address"></label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input asp-for="Address" class="form-control" />
+                        </div>
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+
+                        </div>
+                        <div class="col-sm-4 text-center">
+
+                            @*<a asp-action="Login" class="btn btn-success">Back To List</a>*@
+                            <p><input type="submit" class="btn btn-primary  form-control" value="Save" /></p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+

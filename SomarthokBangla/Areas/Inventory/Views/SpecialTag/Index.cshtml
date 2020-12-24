@@ -1,0 +1,75 @@
+﻿@using SomarthokBangla.Models;
+@model IEnumerable<SpecialTag>
+
+@{
+    ViewData["Title"] = "Index";
+    int serialNo = 0;
+}
+
+<br /><br />
+
+<div class="row">
+
+    <div class="col-sm-6">
+        <h2 class="text-info">Special Tag List</h2>
+    </div>
+    <div class="col-sm-6 text-right">
+        <a asp-action="Create" class="btn btn-info">&nbsp;<i class="fa fa-plus"></i> Special Tag</a>
+    </div>
+</div>
+
+<br />
+
+<div>
+
+    <table class="table table-striped" id="myTable">
+
+        <thead>
+            <tr class="table-info">
+                <th>Serial No.</th>
+                <th>
+                    @Html.DisplayNameFor(c => c.TagName)
+                </th>
+                <th></th>
+                <th></th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(++serialNo)</td>
+                    <td>@item.TagName</td>
+                    <td>
+                        <partial name="_ButtonPartial" model="@item.Id" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>
+
+@section scripts{
+    <script src="~/alertify/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var save = '@TempData["save"]'
+            if (save != '') {
+                alertify.success(save);
+            }
+        })
+
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'print'
+                ]
+            });
+        });
+    </script>
+}

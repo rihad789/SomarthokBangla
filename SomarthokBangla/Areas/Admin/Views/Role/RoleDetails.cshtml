@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Edit Role";
+}
+
+<br />
+
+<h2 class="text-info">Edit Role</h2>
+<br />
+
+<form asp-action="" id="role_form" method="post" enctype="multipart/form-data">
+
+    <div class="p-4 rounded border">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+
+        <input type="hidden" value="@ViewBag.id" name="id" />
+
+        <div class="form-group row">
+            <h3>@ViewBag.mgs</h3>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>Role Name</label>
+            </div>
+            <div class="col-sm-4">
+                <input id="name" name="name" disabled="disabled" value="@ViewBag.name" class="form-control" />
+            </div>
+            <span id="name"></span>
+        </div>
+
+        <div class="form-group row text-right">
+            <div class="col-sm-2">
+
+            </div>
+            <div class="col-sm-4">
+
+                <a asp-action="Index" class="btn btn-success">Back To List</a>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</form>
+
+

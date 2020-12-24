@@ -1,0 +1,530 @@
+﻿@using System.Net.Http
+@using SomarthokBangla.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    int count = 0;
+    List<Products> products = HttpContextAccessor.HttpContext.Session.Get<List<Products>>("productsList");
+    if (products == null)
+    {
+        products = new List<Products>();
+    }
+    count = products.Count();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <!--======= Google Web Fonts =========-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+        <link href="~/lib/AlertifyJS/css/alertify.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="~/css/buttons.dataTables.min.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+        <link href="~/lib/animate.css/animate.min.css" rel="stylesheet" />
+        <link href="~/css/responsive_bootstrap_carousel_mega_min.css" rel="stylesheet" />
+        <link href="~/css/theme.css" rel="stylesheet" />
+
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+
+    <div class="container-fluid">
+
+        @*<div class="row">
+
+            <div class="container">
+
+                <div class="row" >
+
+                    <div class="col-sm-6 text-center">
+                        <h5>
+                            <a href="mailto:youremailaddress"><i class="fa fa-envelope"> support@email.com</i></a>,
+                            <a href="tel:713-992-0916"><i class="fa fa-phone-alt"> +8801303-733598</i></a>
+                        </h5>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <h5>
+                            <a asp-area="" asp-controller="Home" asp-action="About">
+                                <i class="fa fa-map-marker"> Track My Order</i></a> 
+                        </h5>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>*@
+
+        <div class="row">
+
+            <nav class="navbar navbar-default bg-info navbar-fixed-top" style="margin-top:2px">
+
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar bg-primary"></span>
+                            <span class="icon-bar bg-primary"></span>
+                            <span class="icon-bar bg-primary"></span>
+                        </button>
+                        <a href='@Url.Action("Index","Home")' class="navbar-brand">
+                            <img src="~/images/Prism Bangla.svg" height="25" alt="Peekzo logo" />
+                        </a>
+                        @*<a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SomarthokBangla</a>*@
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav ">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                                    <i class="fa fa-home"></i> Home
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Fashion</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#"> Men's Fashion &raquo </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="">Jacket & Coats</a></li>
+                                            <li><a class="dropdown-item" href="">Shirts</a></li>
+                                            @*<li>
+                                                <a class="dropdown-item" href="">Submenu item 3 &raquo </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                                </ul>
+                                            </li>*@
+                                            <li><a class="dropdown-item" href="">T-Shirts</a></li>
+                                            <li><a class="dropdown-item" href="">Jeans</a></li>
+                                            <li><a class="dropdown-item" href="">Bags</a></li>
+                                            <li><a class="dropdown-item" href="">Shoes</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#"> Women's Fashion &raquo </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="">Jacket & Coats</a></li>
+                                            <li><a class="dropdown-item" href="">Saree</a></li>
+                                            <li><a class="dropdown-item" href="">Salowar</a></li>
+                                            <li><a class="dropdown-item" href="">Bags</a></li>
+                                            <li><a class="dropdown-item" href="">Shoes</a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+
+                            @*<li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Tv & Home Appliance</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#"> Television &raquo </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="">T1</a></li>
+                                            <li><a class="dropdown-item" href="">T2</a></li>
+                                            <li>
+                                                <a class="dropdown-item" href="">T3 &raquo </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="dropdown-item" href="">T4</a></li>
+                                            <li><a class="dropdown-item" href="">T5</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#"> Home Theater &raquo </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="">Mobile Accesories</a></li>
+                                            <li><a class="dropdown-item" href="">Audio</a></li>
+                                            <li>
+                                                <a class="dropdown-item" href="">Wearable &raquo </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="dropdown-item" href="">Camera Accesories</a></li>
+
+
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#"> Colling and Heating &raquo </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="">Mobile Accesories</a></li>
+                                            <li><a class="dropdown-item" href="">Audio</a></li>
+                                            <li>
+                                                <a class="dropdown-item" href="">Wearable &raquo </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="dropdown-item" href="">Camera Accesories</a></li>
+
+
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#"> Irons and Garments Streamer &raquo </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="">Mobile Accesories</a></li>
+                                            <li><a class="dropdown-item" href="">Audio</a></li>
+                                            <li>
+                                                <a class="dropdown-item" href="">Wearable &raquo </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="dropdown-item" href="">Camera Accesories</a></li>
+
+
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#"> Water purifiers and Filters &raquo </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="">Mobile Accesories</a></li>
+                                            <li><a class="dropdown-item" href="">Audio</a></li>
+                                            <li>
+                                                <a class="dropdown-item" href="">Wearable &raquo </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="dropdown-item" href="">Camera Accesories</a></li>
+
+
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>*@
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Electronic</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#"> Electronic Device &raquo </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="">Mobile &raquo </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    <li>
+                                                        <a asp-action="Type" asp-area="Customer"
+                                                           asp-controller="Products" asp-route-id="1" class="dropdown-item">Samsung Phones</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-action="Type" asp-area="Customer"
+                                                           asp-controller="Products" asp-route-id="2" class="dropdown-item">Nokia Phones</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-action="Type" asp-area="Customer"
+                                                           asp-controller="Products" asp-route-id="3" class="dropdown-item">Realme Phones</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-action="Type" asp-area="Customer"
+                                                           asp-controller="Products" asp-route-id="4" class="dropdown-item">Oppo Phones</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-action="Type"
+                                                           asp-controller="Products" asp-route-id="5" class="dropdown-item">Vivo Phones</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-action="Type" asp-area="Customer"
+                                                           asp-controller="Products" asp-route-id="6" class="dropdown-item">Xiaomi Phones</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a asp-action="Type" asp-area="Customer"
+                                                   asp-controller="Products" asp-route-id="2" class="dropdown-item">Tablets</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="">Laptops &raquo </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="dropdown-item" href="">Security Camera</a></li>
+                                            <li><a class="dropdown-item" href="">Submenu item 5</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#"> Electronic Accessories &raquo </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="">Mobile Accesories</a></li>
+                                            <li><a class="dropdown-item" href="">Audio</a></li>
+                                            <li>
+                                                <a class="dropdown-item" href="">Wearable &raquo </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="dropdown-item" href="">Camera Accesories</a></li>
+                                            <li><a class="dropdown-item" href="">Computer Accessories</a></li>
+                                            <li><a class="dropdown-item" href="">Storage</a></li>
+                                            <li><a class="dropdown-item" href="">Printers</a></li>
+                                            <li><a class="dropdown-item" href="">Computer Components</a></li>
+                                            <li><a class="dropdown-item" href="">Network Components</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Watches & Accesories</a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"> Men's Watch</a> </li>
+                                    <li><a class="dropdown-item" href="#"> Women's Watch</a> </li>
+                                    <li><a class="dropdown-item" href="#"> Men's Belt</a> </li>
+                                    <li><a class="dropdown-item" href="#"> Men's Wallet</a> </li>
+                                    <li><a class="dropdown-item" href="#"> Sunglases</a> </li>
+                                    <li><a class="dropdown-item" href="#"> Eyeglases</a> </li>
+                                    <li><a class="dropdown-item" href="#"> Kid's Watch</a> </li>
+
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Customer" asp-controller="Products" asp-action="Cart">
+                                    <i class="fa fa-shopping-cart"> Cart <span class="badge badge-success"> @count </span> </i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+
+                                <form class="navbar-form img-responsive nav-link" id="search_form" method="get" asp-action="Search" asp-controller="Products">
+                                    <input class="form-control input-sm mr-sm-2" type="text" name="searchString"  placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+                                </form>
+
+                            </li>
+
+                        </ul>
+
+                        <partial name="_CustomerLoginPartial" />
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+
+        @*<div class="row">
+
+            <!-- Search Bar Start -->
+
+            <div class="search-bar" style="padding:0px 0px 10px 0px">
+                <div class="container">
+                    <div class="row align-items-center">
+
+                        <form id="search_form" method="get" asp-action="Search" asp-controller="Products">
+                            <div class="input-group">
+                                <input type="text" class="input-ol form-control" value="@ViewBag.searchString" style="height:40px" name="searchString" placeholder="Ex: cars, watches, exercise... " />
+                                <span class="input-group-btn">
+                                    <input class="btn btn-outline-primary btn-primary rounded" style="height:40px" value="Search" type="submit" aria-label="Search">
+                                    />
+                                </span>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Bar Finsihed -->
+
+            <partial name="_CookieConsentPartial" />
+
+        </div>*@
+
+        <br />
+        <br />
+
+        <div class="row">
+
+            <div class="container-fluid body-content">
+                @RenderBody()
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <!-- Footer Start -->
+
+            <div class="footer">
+                <div class="container-fluid">
+
+                    <div class="row" style="padding:0px 10px 0px 10px">
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <h2>Get in Touch</h2>
+                                <div class="contact-info">
+                                    <p><i class="fa fa-map-marker"></i>12/9B,Muhammadpur,Dhaka-1215</p>
+                                    <p><i class="fa fa-envelope"></i>email@example.com</p>
+                                    <p><i class="fa fa-phone-alt"></i>+8801303-733598</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <h2>Follow Us</h2>
+                                <div class="contact-info">
+                                    <div class="social">
+                                        <a href=""><i class="fab fa-twitter"></i></a>
+                                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                                        <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                        <a href=""><i class="fab fa-instagram"></i></a>
+                                        <a href=""><i class="fab fa-youtube"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <h2>Company Info</h2>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Terms & Condition</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <h2>Purchase Info</h2>
+                                <ul>
+                                    <li><a href="#">Pyament Policy</a></li>
+                                    <li><a href="#">Shipping Policy</a></li>
+                                    <li><a href="#">Return Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row payment align-items-center">
+
+                        <div class="col-md-6">
+                                <div class="payment-method">
+                                    <h2>We Accept:</h2>
+                                    <img src="~/images/payment-method.png" alt="Payment Method" />
+                                </div>
+                        </div>
+                        <div class="col-md-6">
+                                <div class="payment-security">
+                                    <h2>Secured By:</h2>
+                                    <img src="~/images/godaddy.svg" alt="Payment Security" />
+                                    <img src="~/images/norton.svg" alt="Payment Security" />
+                                    <img src="~/images/ssl.svg" alt="Payment Security" />
+                                </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer End -->
+        </div>
+
+        <div class="row">
+
+            <!-- Footer Bottom Start -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 copyright">
+                            <p class=" text-center">Copyright &copy; <a href="https://htmlcodex.com">Corpoora Ltd.</a>. All Rights Reserved</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Bottom End -->
+            <!-- Back to Top -->
+            <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        </div>
+
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery.touchswipe/jquery.touchSwipe.min.js"></script>
+        <script src="~/js/responsive_bootstrap_carousel.js"></script>
+        <script src="~/lib/easing/easing.min.js"></script>
+        <script src="~/lib/slick/slick.min.js"></script>
+        <script src="~/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js"></script>
+
+
+
+        @*JQuery DataTable For Pagination and Export Library*@
+
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js" asp-append-version="true"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" asp-append-version="true"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" asp-append-version="true"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js" asp-append-version="true"></script>
+
+
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

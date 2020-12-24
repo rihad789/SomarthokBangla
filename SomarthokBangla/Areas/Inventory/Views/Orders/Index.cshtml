@@ -1,0 +1,119 @@
+﻿@using SomarthokBangla.Models;
+@model IEnumerable<Orders>
+
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+<br /><br />
+<br />
+
+<div class="row">
+
+    <table class="table table-striped" id="myTable">
+
+        <thead>
+
+
+            <tr class="table-info">
+                <th>Serial No</th>
+                <th>
+                    @Html.DisplayNameFor(c => c.OrderNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.PhoneNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.OrderDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.OrderConfirmed)
+                </th>
+                <th>
+                    Option
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@(++count)</td>
+                <td>@item.OrderNo</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNo</td>
+                <td>@item.OrderDate</td>
+                <td>@item.OrderConfirmed</td>
+
+                <td>
+                    @if (item.OrderConfirmed == false)
+                    {
+                        <a asp-action="ConfirmOrder" class="btn btn-info" asp-route-id="@item.Id">Confirm Order</a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-info" disabled="disabled">Order Confirmed</button>
+                    }
+
+                </td>
+            </tr>
+            }
+
+        </tbody>
+
+
+
+    </table>
+
+</div>
+
+@section scripts{
+    <script src="~/alertify/alertify.min.js"></script>
+    <script type="text/javascript">
+
+
+            $(function() {
+                var edit = '@TempData["edit"]'
+                if (edit != '') {
+                alertify.success(save);
+                }
+
+                var del = '@TempData["delete"]'
+                if (del != '') {
+                alertify.success(save);
+                }
+
+                var save = '@TempData["save"]'
+                if (save != '') {
+                alertify.success(save);
+            }
+            })
+
+            $(document).ready(function () {
+                $('#myTable').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'csv', 'excel', 'print'
+                    ]
+                });
+            });
+
+
+    </script>
+
+
+}

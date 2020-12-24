@@ -1,0 +1,138 @@
+﻿@model SomarthokBangla.Models.LoginUser
+@{
+    ViewData["Title"] = "Log in";
+    var returnUrl = @Context.Request.Query["ReturnUrl"];
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SomarthokBangla</title>
+    <!--======= Google Web Fonts =========-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+        <link href="~/lib/AlertifyJS/css/alertify.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="~/css/buttons.dataTables.min.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+        <link href="~/lib/animate.css/animate.min.css" rel="stylesheet" />
+        <link href="~/css/responsive_bootstrap_carousel_mega_min.css" rel="stylesheet" />
+        <link href="~/css/theme.css" rel="stylesheet" />
+
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+
+<body>
+    <div class="container">
+
+        <br />
+        <div class="row">
+
+            <div class="col-sm-3">
+
+            </div>
+
+            <div class="col-sm-6" style="margin:10px">
+                <h2 class="text-info text-center">Wellcome to Inventory Managment</h2>
+                <h3 class="text-info text-center">Please login</h3>
+                <form asp-action="Login" id="userForm" method="post" asp-route-ReturnUrl="@returnUrl">
+
+                    <div class="p-4 rounded border">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                        </div>
+
+                        <div class="form-group row">
+                            <h3>@ViewBag.message</h3>
+                        </div>
+
+                        <div class="form-group row">
+                            <h4>@ViewBag.ErroMessage</h4>
+                        </div>
+
+                        <div class="form-group row">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group  row">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" class="form-control" type="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <input asp-for="RememberMe" type="checkbox" />
+                            <label asp-for="RememberMe"></label>
+
+                        </div>
+
+                        <div class="form-group row">
+
+
+                            @*<a asp-action="Login" class="btn btn-success">Back To List</a>*@
+                            <p><input type="submit" class="btn btn-primary  form-control" value="Login" /></p>
+                            <p><a asp-action="Register" asp-controller="User">Register as New user</a></p>
+
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="col-sm-3">
+
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#userForm").validate({
+                rules: {
+                    Email: {
+                        required: true,
+                        minlength: 3
+                    },
+                    Password: {
+                        required: true,
+                        minlength: 3
+                    }
+                },
+                messages: {
+                    Email: "Please provide an Email",
+                    Password: "Please Choose a Password"
+                }
+            });
+
+        });
+
+    </script>
+}

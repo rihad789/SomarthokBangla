@@ -1,0 +1,163 @@
+﻿@model SomarthokBangla.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Register New Account";
+}
+
+<br />
+
+<div class="container">
+
+
+    <div class="row">
+
+        <form asp-action="Register" id="RegisterForm" method="post">
+
+            <div class="p-4 rounded border">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <h3 class="text-info">Register</h3>
+                        <h4 class="text-info">Create New Account</h4>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <h3>@ViewBag.message</h3>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label asp-for="Email"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label asp-for="FirstName"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="FirstName" class="form-control" />
+                    </div>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label asp-for="LastName"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="LastName" class="form-control" />
+                    </div>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label asp-for="PasswordHash"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="PasswordHash" class="form-control" type="password" />
+                    </div>
+                    <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label asp-for="PhoneNumber"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="PhoneNumber" class="form-control" />
+                    </div>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label asp-for="Address"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="Address" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2">
+
+                    </div>
+                    <div class="col-sm-4 text-center">
+
+                        @*<a asp-action="Login" class="btn btn-success">Back To List</a>*@
+                        <p><input type="submit" class="btn btn-primary  form-control" value="Register" /></p>
+                        <p><a asp-action="Login" asp-controller="User"> <strong>Already Registered? Login</strong></a></p>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<br />
+<br />
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#RegisterForm").validate({
+                rules: {
+                    FirstName: {
+                        required: true,
+                        minlength: 3
+                    },
+                    LastName: {
+                        required: true,
+                        minlength: 3
+                    },
+                    UserName: {
+                        required: true,
+                        minlength: 3
+                    },
+                    Email: {
+                        required: true,
+                        minlength: 3
+                    },
+                    PasswordHash: {
+                        required: true,
+                        minlength: 3
+                    }
+                },
+                messages: {
+                    FirstName: "First Name is Required",
+                    LastName: "Last Name is Requried",
+                    UserName: "Please Provide an UserName",
+                    Email: "Please provide an Email",
+                    PasswordHash: "Please Choose a Password"
+                }
+            });
+
+        });
+
+    </script>
+
+}
+
+
+

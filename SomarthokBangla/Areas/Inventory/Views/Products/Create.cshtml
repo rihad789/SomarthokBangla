@@ -1,0 +1,157 @@
+﻿@model SomarthokBangla.Models.Products
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<br />
+
+<h2 class="text-info">Add New Product</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+
+    <div class="p-4 rounded border">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+
+        <div class="form-group row">
+            <h3>@ViewBag.message</h3>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-sm-5">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="Price"></label>
+            </div>
+            <div class="col-sm-5">
+                <input asp-for="Price" class="form-control" />
+            </div>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="Image"></label>
+            </div>
+            <div class="col-sm-5">
+                <input asp-for="Image" class="form-control" type="file" accept="image/x-png,image/jpeg,image/webp" />
+            </div>
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="DetailsHtmlLink"></label>
+            </div>
+            <div class="col-sm-5">
+                <input asp-for="DetailsHtmlLink" class="form-control" type="file" accept="file_extension/html" />
+            </div>
+            <span asp-validation-for="DetailsHtmlLink" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>Special Tag</label>
+
+            </div>
+            <div class="col-sm-5">
+                <select id="SpecialTagId" asp-items="ViewBag.SpecialTagId" class="form-control">
+                    <option value="">Select SpecialTag</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>Product Category</label>
+            </div>
+            <div class="col-sm-5">
+                <select id="ProductCategoryId" asp-items="@(new SelectList(string.Empty,"Id","CategoryName"))" class="form-control">
+                    <option value="">Select Category</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="ProductTypeId"></label>
+            </div>
+            <div class="col-sm-5">
+                <select asp-for="ProductTypeId" asp-items="@(new SelectList(string.Empty,"Id","ProductType"))" class="form-control">
+                    <option value="">Select Type</option>
+                </select>
+            </div>
+            <span asp-validation-for="ProductTypeId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="ManufacturerId"></label>
+            </div>
+            <div class="col-sm-5">
+                <select asp-for="ManufacturerId" asp-items="ViewBag.ManufacturerId" class="form-control">
+                    <option value="">Select Manufacturer</option>
+                </select>
+
+            </div>
+            <span asp-validation-for="ManufacturerId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="ModelNo"></label>
+            </div>
+            <div class="col-sm-5">
+                <input asp-for="ModelNo" class="form-control" />
+            </div>
+            <span asp-validation-for="ModelNo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="Quantity"></label>
+            </div>
+            <div class="col-sm-5">
+                <input asp-for="Quantity" class="form-control" type="number" />
+            </div>
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="IsAvailable"></label>
+            </div>
+            <div class="col-sm-5">
+                <input asp-for="IsAvailable" type="checkbox" class="checkbox" />
+            </div>
+            <span asp-validation-for="IsAvailable" class="text-danger"></span>
+        </div>
+
+
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Save" />
+            <a asp-action="Index" class="btn btn-success">Back To List</a>
+        </div>
+
+    </div>
+
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
+

@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "font-awesome@5.15.1",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "AlertifyJS@1.13.1",
+      "destination": "wwwroot/lib/AlertifyJS/"
+    },
+    {
+      "library": "jquery-easing@1.4.1",
+      "destination": "wwwroot/lib/jquery-easing/"
+    },
+    {
+      "library": "popper.js@2.5.4",
+      "destination": "wwwroot/lib/popper.js/"
+    },
+    {
+      "library": "animate.css@4.1.1",
+      "destination": "wwwroot/lib/animate.css/"
+    },
+    {
+      "library": "jquery.touchswipe@1.6.19",
+      "destination": "wwwroot/lib/jquery.touchswipe/"
+    },
+    {
+      "library": "floating.js@2.7.1",
+      "destination": "wwwroot/floating.js/"
+    },
+    {
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/lib/jquery/"
+    }
+  ]
+}
