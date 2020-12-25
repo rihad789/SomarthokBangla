@@ -37,6 +37,16 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+        <link href="~/lib/AlertifyJS/css/alertify.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="~/css/buttons.dataTables.min.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+        <link href="~/lib/animate.css/animate.min.css" rel="stylesheet" />
+        <link href="~/css/responsive_bootstrap_carousel_mega_min.css" rel="stylesheet" />
+        <link href="~/css/theme.css" rel="stylesheet" />
     </environment>
 </head>
 <body>
@@ -128,100 +138,6 @@
                                 </ul>
                             </li>
 
-
-                            @*<li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Tv & Home Appliance</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="#"> Television &raquo </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item" href="">T1</a></li>
-                                            <li><a class="dropdown-item" href="">T2</a></li>
-                                            <li>
-                                                <a class="dropdown-item" href="">T3 &raquo </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
-                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="dropdown-item" href="">T4</a></li>
-                                            <li><a class="dropdown-item" href="">T5</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#"> Home Theater &raquo </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item" href="">Mobile Accesories</a></li>
-                                            <li><a class="dropdown-item" href="">Audio</a></li>
-                                            <li>
-                                                <a class="dropdown-item" href="">Wearable &raquo </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
-                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="dropdown-item" href="">Camera Accesories</a></li>
-
-
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#"> Colling and Heating &raquo </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item" href="">Mobile Accesories</a></li>
-                                            <li><a class="dropdown-item" href="">Audio</a></li>
-                                            <li>
-                                                <a class="dropdown-item" href="">Wearable &raquo </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
-                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="dropdown-item" href="">Camera Accesories</a></li>
-
-
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#"> Irons and Garments Streamer &raquo </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item" href="">Mobile Accesories</a></li>
-                                            <li><a class="dropdown-item" href="">Audio</a></li>
-                                            <li>
-                                                <a class="dropdown-item" href="">Wearable &raquo </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
-                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="dropdown-item" href="">Camera Accesories</a></li>
-
-
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#"> Water purifiers and Filters &raquo </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item" href="">Mobile Accesories</a></li>
-                                            <li><a class="dropdown-item" href="">Audio</a></li>
-                                            <li>
-                                                <a class="dropdown-item" href="">Wearable &raquo </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li><a class="dropdown-item" href="">Multi level 1</a></li>
-                                                    <li><a class="dropdown-item" href="">Multi level 2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="dropdown-item" href="">Camera Accesories</a></li>
-
-
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>*@
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Electronic</a>
@@ -523,6 +439,27 @@
                 integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery.touchswipe/jquery.touchSwipe.min.js"></script>
+        <script src="~/js/responsive_bootstrap_carousel.js"></script>
+        <script src="~/lib/easing/easing.min.js"></script>
+        <script src="~/lib/slick/slick.min.js"></script>
+        <script src="~/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js"></script>
+
+
+
+        @*JQuery DataTable For Pagination and Export Library*@
+
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js" asp-append-version="true"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" asp-append-version="true"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" asp-append-version="true"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)

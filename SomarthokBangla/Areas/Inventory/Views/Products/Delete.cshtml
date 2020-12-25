@@ -1,13 +1,13 @@
 ﻿@model SomarthokBangla.Models.Products
 @{
-    ViewData["Title"] = "Add Product";
+    ViewData["Title"] = "Delete Product";
 }
 
 <br />
 
-<h2 class="text-info">Add New Product</h2>
+<h2 class="text-info">Delete Product</h2>
 
-<form asp-action="Create" method="post" enctype="multipart/form-data">
+<form asp-action="Delete" method="post" enctype="multipart/form-data">
 
     <div class="p-4 rounded border">
 
@@ -89,9 +89,7 @@
                 <label asp-for="ProductTypeId"></label>
             </div>
             <div class="col-sm-5">
-                <select asp-for="ProductTypeId" asp-items="@(new SelectList(string.Empty,"Id","ProductType"))" class="form-control">
-                    <option value="">Select Type</option>
-                </select>
+                <input asp-for="ProductTypeId" class="form-control" />
             </div>
             <span asp-validation-for="ProductTypeId" class="text-danger"></span>
         </div>

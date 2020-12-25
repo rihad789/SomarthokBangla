@@ -185,20 +185,18 @@
                 </div>
                 <!--======= Navigation Buttons =========-->
                 <!--======= Left Button =========-->
-                @*<a class="left carousel-control gp_products_carousel_control_left" href="#adv_gp_products_4_columns_carousel" role="button" data-slide="prev">
+                <a class="left carousel-control gp_products_carousel_control_left" href="#adv_gp_products_4_columns_carousel" role="button" data-slide="prev">
                     <span class="fa fa-angle-left gp_products_carousel_control_icons" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
 
-                </a>*@
+                </a>
 
                 <!--======= Right Button =========-->
-                @*<a class="right carousel-control gp_products_carousel_control_right" href="#adv_gp_products_4_columns_carousel" role="button" data-slide="next">
+                <a class="right carousel-control gp_products_carousel_control_right" href="#adv_gp_products_4_columns_carousel" role="button" data-slide="next">
                     <span class="fa fa-angle-right gp_products_carousel_control_icons" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
-                </a>*@
+                </a>
 
-                <a class="btn-floating btn-sm" href="#adv_gp_products_4_columns_carousel" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-                <a class="btn-floating btn-sm" href="#adv_gp_products_4_columns_carousel" data-slide="next"><i class="fas fa-chevron-right"></i></a>
 
             </div> <!--*-*-*-*-*-*-*-*-*-*- END BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
 
@@ -357,7 +355,7 @@
                     @foreach (var item in Model)
                     {
 
-                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 3)
+                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 4)
                         {
                             m++;
                             var active = m == 1 ? "active" : "";
@@ -423,7 +421,7 @@
                     @foreach (var item in Model)
                     {
 
-                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 3)
+                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id ==5)
                         {
                             n++;
                             var active = n == 1 ? "active" : "";
@@ -495,7 +493,7 @@
                     @foreach (var item in Model)
                     {
 
-                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 3)
+                        if (@item.ProductTypes.ProductCategory.SpecialTag.Id == 6)
                         {
                             o++;
                             var active = o == 1 ? "active" : "";

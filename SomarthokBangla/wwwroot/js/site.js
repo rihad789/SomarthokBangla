@@ -73,7 +73,7 @@ $(document).ready(function () {
             success: function (data) {
                 var s = '<option value="-1">Select a ProductType</option>';
                 for (var i = 0; i < data.length; i++) {
-                    s += '<option value="' + data[i].val + '">' + data[i].text + '</option>';
+                    s += '<option value="' + data[i].value + '">' + data[i].text + '</option>';
                 }
                 $("#ProductTypeId").html(s);
             }

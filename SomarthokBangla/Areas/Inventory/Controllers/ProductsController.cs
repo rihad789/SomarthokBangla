@@ -210,6 +210,7 @@ namespace SomarthokBangla.Areas.Inventory.Controllers
             {
                 return NotFound();
             }
+            ViewData["ManufacturerId"] = new SelectList(_db.Manufacturer.ToList(), "Id", "ManufacturerName");
             var product = _db.Products.Include(c => c.ProductTypes).Include(c => c.ProductTypes.ProductCategory).
                 Include(c => c.ProductTypes.ProductCategory.SpecialTag).FirstOrDefault(c => c.Id == id);
             if (product == null)

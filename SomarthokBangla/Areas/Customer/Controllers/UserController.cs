@@ -25,7 +25,7 @@ namespace SomarthokBangla.Areas.Customer.Controllers
         }
 
 
-        [Authorize(AuthenticationSchemes = "Customer")]
+
         [Authorize]
         public async Task<IActionResult> Manage()
         {
