@@ -31,7 +31,7 @@ namespace SomarthokBangla.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult>CreateRole()
+        public IActionResult CreateRole()
         {
             return View();
         }
@@ -146,7 +146,7 @@ namespace SomarthokBangla.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AssignUserRole()
+        public IActionResult AssignUserRole()
         {
             ViewData["UserId"] = new SelectList(_db.ApplicationUser.ToList(), "Id", "UserName");
             ViewData["RoleId"] = new SelectList(_roleManager.Roles.ToList(), "Name", "Name");
@@ -182,7 +182,7 @@ namespace SomarthokBangla.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ManageUser()
+        public IActionResult ManageUser()
         {
             var user = _db.ApplicationUser.ToList();
             if (user == null)
